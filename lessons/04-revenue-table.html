@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 4: Revenue Table &amp; Configuration | Operating Lease Training</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html"><i class="bi bi-journal-bookmark-fill me-2"></i>Operating Lease Training</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Lessons</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="01-what-is-operating-lease.html">1. What is an Operating Lease?</a></li>
+              <li><a class="dropdown-item" href="02-income-recognition.html">2. Income Recognition</a></li>
+              <li><a class="dropdown-item" href="03-depreciation-and-idcs.html">3. Depreciation &amp; IDCs</a></li>
+              <li><a class="dropdown-item active" href="04-revenue-table.html">4. Revenue Table</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="../quiz/quiz.html">Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="../calculator/calculator.html">Calculator</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-4">
+    <div class="lesson-container">
+
+      <h1><i class="bi bi-4-circle-fill me-2"></i>Revenue Table &amp; Configuration</h1>
+
+      <h2>What is the Revenue Table?</h2>
+      <p>The <strong>revenue table</strong> is the core data structure that drives the accounting entries for a lease. It contains period-by-period calculations for income, depreciation, net book value, and cash flows. Each row represents a single accounting period.</p>
+
+      <h2>Standard Revenue Table Columns</h2>
+      <p>The following columns are common to all lease types:</p>
+
+      <div class="table-responsive">
+        <table class="table example-table">
+          <thead>
+            <tr>
+              <th>Column</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>start_date</code></td><td>Start date of the accounting period</td></tr>
+            <tr><td><code>end_date</code></td><td>End date of the accounting period</td></tr>
+            <tr><td><code>days</code></td><td>Number of days in the period</td></tr>
+            <tr><td><code>rental_income</code></td><td>Straight-line rental income for the period</td></tr>
+            <tr><td><code>depreciation</code></td><td>Depreciation charge for the period</td></tr>
+            <tr><td><code>asset_net_book_value</code></td><td>Net book value of the asset at period end</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>New Operating Lease Columns</h2>
+      <p>Operating leases introduce additional columns to the revenue table:</p>
+
+      <div class="table-responsive">
+        <table class="table example-table">
+          <thead>
+            <tr>
+              <th>Column</th>
+              <th>Description</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>asset_cash_flow_event</code></td>
+              <td>Cash flows related to the underlying asset</td>
+              <td>Tracks initial purchase cost and final disposal/sale proceeds of the leased asset</td>
+            </tr>
+            <tr>
+              <td><code>rental_income_cash_flow_event</code></td>
+              <td>Cash received for rental payments</td>
+              <td>Records actual cash received from the lessee each period (may differ from straight-line income)</td>
+            </tr>
+            <tr>
+              <td><code>charge_cash_flow_event</code></td>
+              <td>Cash flows for charges (e.g., IDCs)</td>
+              <td>Tracks cash payments related to initial direct costs and other charges</td>
+            </tr>
+            <tr>
+              <td><code>rental_prepayment_or_accrual</code></td>
+              <td>Balance sheet prepayment or accrual</td>
+              <td>The cumulative difference between cash received and straight-line income recognised (positive = prepayment, negative = accrual)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Example Revenue Table</h3>
+      <p>For a 3-period operating lease: Asset cost &pound;60,000, residual &pound;12,000, rental &pound;1,800/month, IDC &pound;900:</p>
+
+      <div class="table-responsive">
+        <table class="table example-table table-sm">
+          <thead>
+            <tr>
+              <th>Period</th>
+              <th>Start</th>
+              <th>End</th>
+              <th>Days</th>
+              <th>Rental Income</th>
+              <th>Depreciation</th>
+              <th>IDC Expense</th>
+              <th>NBV</th>
+              <th>Prepay/Accrual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td><td>01 Jan</td><td>31 Jan</td><td>31</td>
+              <td>&pound;1,800</td><td>&pound;1,600</td><td>&pound;300</td>
+              <td>&pound;58,400</td><td>&pound;0</td>
+            </tr>
+            <tr>
+              <td>2</td><td>01 Feb</td><td>28 Feb</td><td>28</td>
+              <td>&pound;1,800</td><td>&pound;1,600</td><td>&pound;300</td>
+              <td>&pound;56,800</td><td>&pound;0</td>
+            </tr>
+            <tr>
+              <td>3</td><td>01 Mar</td><td>31 Mar</td><td>31</td>
+              <td>&pound;1,800</td><td>&pound;1,600</td><td>&pound;300</td>
+              <td>&pound;55,200</td><td>&pound;0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="standard-ref">Depreciation: (&pound;60,000 &minus; &pound;12,000) &divide; 30 months = &pound;1,600/month. IDC: &pound;900 &divide; 3 = &pound;300/month.</p>
+
+      <h2>System Configuration</h2>
+
+      <h3>accounting-agreement-types</h3>
+      <p>The accounting agreement type determines which accounting method is applied to a lease. For operating leases:</p>
+
+      <div class="concept-box success">
+        <h5>RENTAL_INCOME_AND_DEPRECIATION</h5>
+        <p class="mb-0">This is the method configured for operating leases. It instructs the system to:</p>
+        <ul class="mb-0 mt-2">
+          <li>Recognise rental income on a straight-line basis</li>
+          <li>Calculate depreciation on the underlying asset</li>
+          <li>Amortise IDCs over the lease term</li>
+        </ul>
+      </div>
+
+      <h3>charge-accounting-types</h3>
+      <p>Each accounting charge has a type that determines how it is calculated and posted. The key types for operating leases are:</p>
+
+      <div class="table-responsive">
+        <table class="table example-table">
+          <thead>
+            <tr>
+              <th>Charge Accounting Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>STRAIGHT_LINE_RENTAL_INCOME</code></td>
+              <td>Recognises rental income evenly across the lease term. Generates journal entries for rental income and any prepayment/accrual balance.</td>
+            </tr>
+            <tr>
+              <td><code>STRAIGHT_LINE_DEPRECIATION</code></td>
+              <td>Calculates straight-line depreciation from asset cost to residual value over the useful life. Generates depreciation expense journal entries.</td>
+            </tr>
+            <tr>
+              <td><code>STRAIGHT_LINE_CHARGE</code></td>
+              <td>Used for IDC amortisation. Spreads the charge evenly across the lease term. Generates amortisation expense journal entries.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Configuration Flow</h3>
+      <div class="concept-box">
+        <ol class="mb-0">
+          <li><strong>Lease Agreement</strong> is linked to an <strong>accounting-agreement-type</strong> (e.g., RENTAL_INCOME_AND_DEPRECIATION)</li>
+          <li>The accounting-agreement-type defines the <strong>charges</strong> to generate (rental income, depreciation, IDC)</li>
+          <li>Each charge has a <strong>charge-accounting-type</strong> (e.g., STRAIGHT_LINE_RENTAL_INCOME)</li>
+          <li>The charge-accounting-type determines the <strong>calculation method</strong> and the <strong>journal entry template</strong></li>
+          <li>The <strong>revenue table</strong> is populated based on these calculations</li>
+        </ol>
+      </div>
+
+      <div class="source-ref">
+        <h5><i class="bi bi-link-45deg me-1"></i>Confluence Sources</h5>
+        <ul>
+          <li><a href="https://lendscape.atlassian.net/wiki/spaces/AF/pages/444334571/Operating+lease+accounting+within+agreement+module" target="_blank">Operating lease accounting within agreement module</a> &mdash; revenue table column definitions (asset_cash_flow_event, rental_income_cash_flow_event, charge_cash_flow_event, rental_prepayment_or_accrual, asset_net_book_value, etc.), charge-accounting-types configuration, RENTAL_INCOME_AND_DEPRECIATION method</li>
+          <li><a href="https://lendscape.atlassian.net/wiki/spaces/AF/pages/507543580/Required+Worked+Examples+for+Operating+Lease+Revenue" target="_blank">Required Worked Examples for Operating Lease Revenue</a> &mdash; worked examples and expected revenue table outputs</li>
+          <li><a href="https://lendscape.atlassian.net/wiki/spaces/AF/pages/427688427/Operating+lease+accounting" target="_blank">Operating lease accounting</a> &mdash; tactical approach for accounting within agreement module, comparison of preferred vs tactical models</li>
+        </ul>
+      </div>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li>The revenue table is a period-by-period schedule of income, depreciation, and net book value</li>
+        <li>Operating leases add columns for asset cash flows, rental cash flows, charge cash flows, and prepayment/accrual tracking</li>
+        <li>The <strong>RENTAL_INCOME_AND_DEPRECIATION</strong> method drives the operating lease accounting</li>
+        <li>Three charge-accounting-types handle the different calculations: rental income, depreciation, and IDC amortisation</li>
+      </ul>
+
+      <!-- Mark Complete & Navigation -->
+      <div class="text-center my-4">
+        <button id="btn-mark-complete" class="btn btn-outline-success btn-mark-complete btn-lg">
+          <i class="bi bi-check-circle me-1"></i> Mark as Complete
+        </button>
+      </div>
+
+      <div class="lesson-nav">
+        <a href="03-depreciation-and-idcs.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Previous: Depreciation &amp; IDCs</a>
+        <a href="../quiz/quiz.html" class="btn btn-primary">Take the Quiz <i class="bi bi-arrow-right ms-1"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-0">Operating Lease Training</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => initLessonPage('lesson-4'));</script>
+</body>
+</html>

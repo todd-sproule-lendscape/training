@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 2: Income Recognition | Operating Lease Training</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html"><i class="bi bi-journal-bookmark-fill me-2"></i>Operating Lease Training</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Lessons</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="01-what-is-operating-lease.html">1. What is an Operating Lease?</a></li>
+              <li><a class="dropdown-item active" href="02-income-recognition.html">2. Income Recognition</a></li>
+              <li><a class="dropdown-item" href="03-depreciation-and-idcs.html">3. Depreciation &amp; IDCs</a></li>
+              <li><a class="dropdown-item" href="04-revenue-table.html">4. Revenue Table</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="../quiz/quiz.html">Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="../calculator/calculator.html">Calculator</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-4">
+    <div class="lesson-container">
+
+      <h1><i class="bi bi-2-circle-fill me-2"></i>Income Recognition</h1>
+
+      <h2>Straight-Line Recognition</h2>
+      <p>The core principle for operating lease income recognition is straightforward: rental income is recognised on a <strong>straight-line basis</strong> over the lease term.</p>
+
+      <div class="concept-box">
+        <h5>IFRS 16 S81</h5>
+        <p class="mb-0">"A lessor shall recognise lease payments from operating leases as income on either a straight-line basis or another systematic basis. The lessor shall apply another systematic basis if that basis is more representative of the pattern in which benefit from the use of the underlying asset is diminished."</p>
+      </div>
+
+      <div class="concept-box">
+        <h5>ASC 842-30-25-11</h5>
+        <p class="mb-0">"A lessor shall recognise lease payments provided for in the lease, including any step rent provisions, on a straight-line basis over the lease term unless another systematic and rational basis is more representative of the time pattern in which use benefit from the leased property is diminished."</p>
+      </div>
+
+      <h3>Example: Straight-Line Rental Income</h3>
+      <p>Consider a 36-month operating lease with the following payment structure:</p>
+
+      <table class="table example-table">
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Monthly Rental (Cash)</th>
+            <th>Straight-Line Income</th>
+            <th>Prepayment / (Accrual)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Months 1&ndash;12</td>
+            <td>&pound;1,000</td>
+            <td>&pound;1,167</td>
+            <td>(&pound;167)</td>
+          </tr>
+          <tr>
+            <td>Months 13&ndash;24</td>
+            <td>&pound;1,200</td>
+            <td>&pound;1,167</td>
+            <td>&pound;33</td>
+          </tr>
+          <tr>
+            <td>Months 25&ndash;36</td>
+            <td>&pound;1,300</td>
+            <td>&pound;1,167</td>
+            <td>&pound;133</td>
+          </tr>
+          <tr class="table-info">
+            <td><strong>Total</strong></td>
+            <td><strong>&pound;42,000</strong></td>
+            <td><strong>&pound;42,000</strong></td>
+            <td><strong>&pound;0</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="standard-ref">Total rental: (12 &times; &pound;1,000) + (12 &times; &pound;1,200) + (12 &times; &pound;1,300) = &pound;42,000. Straight-line = &pound;42,000 &divide; 36 = &pound;1,167/month.</p>
+
+      <h2>Variable Lease Payments</h2>
+      <p>Variable lease payments are payments that depend on an index, rate, or usage. Under IFRS 16 and ASC 842:</p>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <div class="concept-box success">
+            <h5>In-Substance Fixed Payments</h5>
+            <p class="mb-0">Payments that are structured as variable but are in substance unavoidable are included in lease payments and recognised straight-line.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="concept-box warning">
+            <h5>True Variable Payments</h5>
+            <p class="mb-0">Payments based on usage or performance (e.g., percentage of sales) are <strong>not</strong> included in the lease measurement and are recognised as income when the triggering event occurs.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Lease Modifications</h2>
+      <p>When an operating lease is modified, the lessor's accounting depends on whether the modification is treated as a separate contract:</p>
+
+      <div class="concept-box">
+        <h5>ASC 842-10-25-15 &mdash; Modification Accounting</h5>
+        <p>If the modification is <strong>not</strong> a separate contract, the lessor shall:</p>
+        <ol class="mb-0">
+          <li>Reclassify the lease (if needed) as of the modification effective date</li>
+          <li>Account for any prepaid or accrued lease rentals as part of the <strong>new</strong> lease</li>
+          <li>Treat the modified lease as a <strong>new lease</strong> from the modification date</li>
+        </ol>
+      </div>
+
+      <p>A modification is treated as a <strong>separate contract</strong> if it:</p>
+      <ul>
+        <li>Grants an additional right of use not included in the original lease, <strong>and</strong></li>
+        <li>The consideration increases commensurate with the standalone price of the additional right of use</li>
+      </ul>
+
+      <h2>Collectibility Considerations</h2>
+      <p>Collectibility affects how income is recognised:</p>
+
+      <table class="table example-table">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Income Recognition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Collectibility is <strong>probable</strong></td>
+            <td>Recognise rental income on a straight-line basis as normal</td>
+          </tr>
+          <tr>
+            <td>Collectibility is <strong>not probable</strong></td>
+            <td>Limit income recognition to the <strong>lesser of</strong> straight-line income or cash collected (ASC 842)</td>
+          </tr>
+          <tr>
+            <td>Collectibility <strong>subsequently becomes</strong> probable</td>
+            <td>Catch up previously limited income to reflect the cumulative straight-line amount</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="concept-box warning">
+        <strong>Important:</strong> Under IFRS 16, the standard does not explicitly address collectibility in the same way as ASC 842. However, expected credit losses on lease receivables are addressed under IFRS 9.
+      </div>
+
+      <div class="source-ref">
+        <h5><i class="bi bi-link-45deg me-1"></i>Confluence Sources</h5>
+        <ul>
+          <li><a href="https://lendscape.atlassian.net/wiki/spaces/AF/pages/427688427/Operating+lease+accounting" target="_blank">Operating lease accounting</a> &mdash; IFRS 16 &sect;81 and ASC 842-30-25-11 straight-line rental income recognition, variable lease payments (ASC 842-30-25-11b), collectibility (ASC 842-30-25-12, 842-30-25-13), modifications (ASC 842-10-25-15)</li>
+          <li><a href="https://lendscape.atlassian.net/wiki/spaces/AF/pages/444334571/Operating+lease+accounting+within+agreement+module" target="_blank">Operating lease accounting within agreement module</a> &mdash; straight-line recognition configuration (RENTAL_INCOME_AND_DEPRECIATION method), charge recognition methods</li>
+        </ul>
+      </div>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li>Rental income is recognised on a <strong>straight-line basis</strong> over the lease term</li>
+        <li>Step-rent structures still result in even income recognition through straight-lining</li>
+        <li>Variable payments based on usage are recognised when the event occurs, not straight-lined</li>
+        <li>Lease modifications (if not a separate contract) are treated as a new lease from the modification date</li>
+        <li>When collectibility is not probable, income recognition is limited to cash collected</li>
+      </ul>
+
+      <!-- Mark Complete & Navigation -->
+      <div class="text-center my-4">
+        <button id="btn-mark-complete" class="btn btn-outline-success btn-mark-complete btn-lg">
+          <i class="bi bi-check-circle me-1"></i> Mark as Complete
+        </button>
+      </div>
+
+      <div class="lesson-nav">
+        <a href="01-what-is-operating-lease.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Previous: What is an OL?</a>
+        <a href="03-depreciation-and-idcs.html" class="btn btn-primary">Next: Depreciation &amp; IDCs <i class="bi bi-arrow-right ms-1"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-0">Operating Lease Training</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => initLessonPage('lesson-2'));</script>
+</body>
+</html>

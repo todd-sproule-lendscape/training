@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lease Calculator | Operating Lease Training</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html"><i class="bi bi-journal-bookmark-fill me-2"></i>Operating Lease Training</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Lessons</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="../lessons/01-what-is-operating-lease.html">1. What is an Operating Lease?</a></li>
+              <li><a class="dropdown-item" href="../lessons/02-income-recognition.html">2. Income Recognition</a></li>
+              <li><a class="dropdown-item" href="../lessons/03-depreciation-and-idcs.html">3. Depreciation &amp; IDCs</a></li>
+              <li><a class="dropdown-item" href="../lessons/04-revenue-table.html">4. Revenue Table</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="../quiz/quiz.html">Quiz</a></li>
+          <li class="nav-item"><a class="nav-link active" href="calculator.html">Calculator</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-4">
+
+    <div class="calculator-container">
+      <div class="text-center mb-4">
+        <h1><i class="bi bi-calculator me-2"></i>Straight-Line Lease Calculator</h1>
+        <p class="lead text-muted">Calculate rental income, depreciation, IDC amortisation, and view the full schedule.</p>
+      </div>
+
+      <form id="calc-form" onsubmit="event.preventDefault(); Calculator.calculate();">
+        <div class="row g-3">
+
+          <div class="col-md-6 col-lg-4">
+            <label for="calc-asset-cost" class="form-label"><strong>Asset Cost</strong></label>
+            <div class="input-group">
+              <span class="input-group-text">&pound;</span>
+              <input type="number" class="form-control" id="calc-asset-cost" placeholder="100,000" min="0" step="0.01" required>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <label for="calc-residual" class="form-label"><strong>Residual Value</strong></label>
+            <div class="input-group">
+              <span class="input-group-text">&pound;</span>
+              <input type="number" class="form-control" id="calc-residual" placeholder="20,000" min="0" step="0.01" required>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <label for="calc-term" class="form-label"><strong>Lease Term (months)</strong></label>
+            <input type="number" class="form-control" id="calc-term" placeholder="36" min="1" max="600" required>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <label for="calc-rental" class="form-label"><strong>Monthly Rental Amount</strong></label>
+            <div class="input-group">
+              <span class="input-group-text">&pound;</span>
+              <input type="number" class="form-control" id="calc-rental" placeholder="1,500" min="0" step="0.01" required>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <label for="calc-idc" class="form-label"><strong>Initial Direct Costs (IDC)</strong></label>
+            <div class="input-group">
+              <span class="input-group-text">&pound;</span>
+              <input type="number" class="form-control" id="calc-idc" placeholder="0" min="0" step="0.01" value="0">
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <label for="calc-start-date" class="form-label"><strong>Lease Start Date</strong></label>
+            <input type="date" class="form-control" id="calc-start-date" required>
+          </div>
+
+          <div class="col-12 text-center mt-3">
+            <button type="submit" class="btn btn-primary btn-lg">
+              <i class="bi bi-calculator me-1"></i> Calculate
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Output (hidden until calculated) -->
+    <div id="calc-output" class="d-none">
+
+      <!-- Summary -->
+      <div class="calc-output mt-4">
+        <h5><i class="bi bi-clipboard-data me-2"></i>Per-Period Summary</h5>
+        <dl class="row calc-summary mb-0">
+          <dt class="col-sm-6">Straight-Line Rental Income (monthly)</dt>
+          <dd class="col-sm-6" id="summary-rental"></dd>
+
+          <dt class="col-sm-6">Depreciation (monthly)</dt>
+          <dd class="col-sm-6" id="summary-depreciation"></dd>
+
+          <dt class="col-sm-6">IDC Amortisation (monthly)</dt>
+          <dd class="col-sm-6" id="summary-idc"></dd>
+
+          <dt class="col-sm-6">Net Income (monthly)</dt>
+          <dd class="col-sm-6" id="summary-net"></dd>
+        </dl>
+      </div>
+
+      <!-- Chart -->
+      <div class="chart-wrapper mt-4">
+        <canvas id="calc-chart"></canvas>
+      </div>
+
+      <!-- Schedule Table -->
+      <div class="calc-output mt-4">
+        <h5><i class="bi bi-table me-2"></i>Full Amortisation Schedule</h5>
+        <div class="schedule-table">
+          <table class="table table-striped table-sm">
+            <thead>
+              <tr>
+                <th>Period</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th class="text-end">Rental Income</th>
+                <th class="text-end">Depreciation</th>
+                <th class="text-end">IDC Expense</th>
+                <th class="text-end">Net Book Value</th>
+              </tr>
+            </thead>
+            <tbody id="schedule-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-0">Operating Lease Training</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

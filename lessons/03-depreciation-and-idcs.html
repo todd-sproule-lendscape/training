@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 3: Depreciation &amp; Initial Direct Costs | Operating Lease Training</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html"><i class="bi bi-journal-bookmark-fill me-2"></i>Operating Lease Training</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Lessons</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="01-what-is-operating-lease.html">1. What is an Operating Lease?</a></li>
+              <li><a class="dropdown-item" href="02-income-recognition.html">2. Income Recognition</a></li>
+              <li><a class="dropdown-item active" href="03-depreciation-and-idcs.html">3. Depreciation &amp; IDCs</a></li>
+              <li><a class="dropdown-item" href="04-revenue-table.html">4. Revenue Table</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="../quiz/quiz.html">Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="../calculator/calculator.html">Calculator</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-4">
+    <div class="lesson-container">
+
+      <h1><i class="bi bi-3-circle-fill me-2"></i>Depreciation &amp; Initial Direct Costs</h1>
+
+      <h2>Straight-Line Depreciation</h2>
+      <p>Under an operating lease, the lessor retains the underlying asset on their balance sheet and depreciates it. The standard method is <strong>straight-line depreciation</strong> from cost to residual value over the asset's useful life.</p>
+
+      <div class="concept-box">
+        <h5>Formula</h5>
+        <p class="mb-0" style="font-size: 1.1rem;">
+          <strong>Monthly Depreciation</strong> = (Asset Cost &minus; Residual Value) &divide; Useful Life (in months)
+        </p>
+      </div>
+
+      <h3>Example</h3>
+      <table class="table example-table">
+        <tbody>
+          <tr><td><strong>Asset Cost</strong></td><td>&pound;100,000</td></tr>
+          <tr><td><strong>Residual Value</strong></td><td>&pound;20,000</td></tr>
+          <tr><td><strong>Useful Life</strong></td><td>60 months (5 years)</td></tr>
+          <tr class="table-info"><td><strong>Monthly Depreciation</strong></td><td>&pound;1,333.33</td></tr>
+          <tr class="table-info"><td><strong>Annual Depreciation</strong></td><td>&pound;16,000</td></tr>
+        </tbody>
+      </table>
+      <p class="standard-ref">(&pound;100,000 &minus; &pound;20,000) &divide; 60 = &pound;1,333.33 per month</p>
+
+      <h2>Useful Life Determination</h2>
+      <p>The useful life is determined with reference to the following standards:</p>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <div class="concept-box">
+            <h5>IFRS 16 S84</h5>
+            <p class="mb-0">The lessor shall depreciate the underlying asset consistent with IAS 16 (Property, Plant and Equipment) or IAS 38 (Intangible Assets) as applicable.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="concept-box">
+            <h5>ASC 842-30-35-5</h5>
+            <p class="mb-0">The underlying asset shall be depreciated in accordance with the depreciation policy for similar assets held by the lessor (typically ASC 360).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="concept-box warning">
+        <strong>Important:</strong> The useful life may be longer than the lease term. The depreciation period is based on the asset's economic useful life, not the lease term. This is a key distinction from IDC amortisation.
+      </div>
+
+      <h2>Initial Direct Costs (IDCs)</h2>
+      <p>Initial Direct Costs are incremental costs directly attributable to negotiating and arranging a lease. Examples include:</p>
+      <ul>
+        <li>Commissions paid to brokers or agents</li>
+        <li>Legal fees for lease negotiation</li>
+        <li>Costs of credit checks on the lessee</li>
+      </ul>
+
+      <div class="concept-box success">
+        <h5>IDC Treatment for Operating Leases</h5>
+        <p>Under both IFRS 16 S83 and ASC 842-30-25-11c:</p>
+        <ul class="mb-0">
+          <li>IDCs are <strong>added to the carrying amount</strong> of the underlying asset</li>
+          <li>They are then <strong>expensed over the lease term</strong> on a straight-line basis (same basis as rental income)</li>
+          <li>This differs from depreciation, which is over the <strong>useful life</strong> of the asset</li>
+        </ul>
+      </div>
+
+      <h3>IDC vs Depreciation Comparison</h3>
+      <table class="table example-table">
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th>Depreciation</th>
+            <th>IDC Amortisation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Basis</strong></td>
+            <td>Cost less residual value</td>
+            <td>Total IDC amount</td>
+          </tr>
+          <tr>
+            <td><strong>Period</strong></td>
+            <td>Useful life of the asset</td>
+            <td>Lease term</td>
+          </tr>
+          <tr>
+            <td><strong>Method</strong></td>
+            <td>Straight-line (typically)</td>
+            <td>Straight-line (same basis as income)</td>
+          </tr>
+          <tr>
+            <td><strong>P&amp;L impact</strong></td>
+            <td>Depreciation expense</td>
+            <td>Amortisation of IDC expense</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Tax Accounting Overview</h2>
+      <p>Tax treatment of leased assets can differ significantly from the accounting treatment. Below is a high-level overview:</p>
+
+      <h3>UK &mdash; Capital Allowances</h3>
+      <div class="concept-box">
+        <ul class="mb-0">
+          <li><strong>Annual Investment Allowance (AIA):</strong> 100% first-year relief on qualifying plant &amp; machinery (subject to annual limits)</li>
+          <li><strong>Writing Down Allowance (WDA):</strong> 18% on the main pool or 6% on the special rate pool</li>
+          <li><strong>Structures and Buildings Allowance (SBA):</strong> 3% straight-line for qualifying non-residential structures</li>
+          <li>Tax depreciation (capital allowances) replaces accounting depreciation for tax computation purposes</li>
+        </ul>
+      </div>
+
+      <h3>US &mdash; MACRS</h3>
+      <div class="concept-box">
+        <ul class="mb-0">
+          <li><strong>Modified Accelerated Cost Recovery System (MACRS):</strong> Prescribed recovery periods and methods (e.g., 5-year, 7-year property)</li>
+          <li><strong>Section 179 Expensing:</strong> Allows immediate expensing of qualifying assets (subject to limits)</li>
+          <li><strong>Bonus Depreciation:</strong> Additional first-year depreciation on qualifying property</li>
+          <li>Tax depreciation may differ from book depreciation, creating deferred tax differences</li>
+        </ul>
+      </div>
+
+      <div class="source-ref">
+        <h5><i class="bi bi-link-45deg me-1"></i>Confluence Sources</h5>
+        <ul>
+          <li><a href="https://lendscape.atlassian.net/wiki/spaces/AF/pages/427688427/Operating+lease+accounting" target="_blank">Operating lease accounting</a> &mdash; straight-line depreciation to residual value, useful life determination (IFRS 16 &sect;84 &gt;&gt; IAS 16 &sect;50-62; ASC 842-30-35-5 &gt;&gt; ASC 360-10-35-2), IDC treatment (IFRS 16 &sect;83; ASC 842-30-25-11), UK capital allowances, US MACRS depreciation</li>
+          <li><a href="https://lendscape.atlassian.net/wiki/spaces/AF/pages/444334571/Operating+lease+accounting+within+agreement+module" target="_blank">Operating lease accounting within agreement module</a> &mdash; STRAIGHT_LINE_DEPRECIATION and STRAIGHT_LINE_CHARGE configuration for depreciation and IDC amortisation</li>
+        </ul>
+      </div>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li>Depreciation is calculated straight-line from cost to residual value over the asset's <strong>useful life</strong></li>
+        <li>IDCs are expensed over the <strong>lease term</strong>, not the useful life</li>
+        <li>The useful life of the asset may extend beyond the lease term</li>
+        <li>Tax treatment (capital allowances / MACRS) often differs from book accounting</li>
+      </ul>
+
+      <!-- Mark Complete & Navigation -->
+      <div class="text-center my-4">
+        <button id="btn-mark-complete" class="btn btn-outline-success btn-mark-complete btn-lg">
+          <i class="bi bi-check-circle me-1"></i> Mark as Complete
+        </button>
+      </div>
+
+      <div class="lesson-nav">
+        <a href="02-income-recognition.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i> Previous: Income Recognition</a>
+        <a href="04-revenue-table.html" class="btn btn-primary">Next: Revenue Table <i class="bi bi-arrow-right ms-1"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-0">Operating Lease Training</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => initLessonPage('lesson-3'));</script>
+</body>
+</html>
