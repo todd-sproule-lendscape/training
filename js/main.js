@@ -123,45 +123,34 @@ function initLessonPage(lessonId) {
 }
 
 // ---------------------------------------------------------------------------
-// Quiz Engine
+// Quiz Engine — Page-by-page, grouped by lesson, with calculation questions
 // ---------------------------------------------------------------------------
 const QuizEngine = {
+  LESSON_INFO: {
+    1: { name: 'What is an Operating Lease?', url: '../lessons/01-what-is-operating-lease.html', icon: 'bi-1-circle-fill' },
+    2: { name: 'Income Recognition', url: '../lessons/02-income-recognition.html', icon: 'bi-2-circle-fill' },
+    3: { name: 'Depreciation & IDCs', url: '../lessons/03-depreciation-and-idcs.html', icon: 'bi-3-circle-fill' },
+    4: { name: 'Revenue Table & Configuration', url: '../lessons/04-revenue-table.html', icon: 'bi-4-circle-fill' }
+  },
+
   questions: [
+    // ---- Lesson 1: What is an Operating Lease? ----
     {
+      lesson: 1, type: 'choice',
       q: 'Under an operating lease, who retains ownership of the underlying asset?',
       options: ['The lessee', 'The lessor', 'A third-party custodian', 'It depends on the jurisdiction'],
       answer: 1,
       explanation: 'In an operating lease the lessor retains ownership of the asset and recognises it on their balance sheet.'
     },
     {
+      lesson: 1, type: 'choice',
       q: 'Which accounting standard governs lease accounting under IFRS?',
       options: ['IAS 17', 'IFRS 16', 'IFRS 9', 'IAS 36'],
       answer: 1,
       explanation: 'IFRS 16 "Leases" replaced IAS 17 and governs lease accounting from the lessor and lessee perspective.'
     },
     {
-      q: 'How should rental income from an operating lease be recognised according to IFRS 16?',
-      options: [
-        'Accelerated in the early periods',
-        'On a straight-line basis over the lease term',
-        'Only when cash is received',
-        'Deferred until lease end'
-      ],
-      answer: 1,
-      explanation: 'IFRS 16 S81 requires lessors to recognise operating lease rental income on a straight-line basis over the lease term unless another systematic basis is more representative.'
-    },
-    {
-      q: 'Under ASC 842, how are initial direct costs (IDCs) for an operating lease treated?',
-      options: [
-        'Expensed immediately at inception',
-        'Capitalised and amortised over the lease term on a straight-line basis',
-        'Added to the residual value of the asset',
-        'Deferred until the lease is terminated'
-      ],
-      answer: 1,
-      explanation: 'ASC 842-30-25-11c requires IDCs to be deferred and recognised as expense over the lease term on the same basis as lease income (straight-line).'
-    },
-    {
+      lesson: 1, type: 'choice',
       q: 'What is the primary distinction between an operating lease and a finance lease?',
       options: [
         'Operating leases are always shorter',
@@ -173,50 +162,40 @@ const QuizEngine = {
       explanation: 'A finance lease transfers substantially all the risks and rewards incidental to ownership of the underlying asset, whereas an operating lease does not.'
     },
     {
-      q: 'In a revenue table for an operating lease, which of the following is typically NOT a column?',
+      lesson: 1, type: 'choice',
+      q: 'What does RIAD stand for?',
       options: [
-        'rental_income',
-        'depreciation',
-        'asset_net_book_value',
-        'lessee_right_of_use_asset'
+        'Revenue Interest And Depreciation',
+        'Rental Income And Depreciation',
+        'Recognised Income And Deductions',
+        'Revenue In Accounting Data'
       ],
-      answer: 3,
-      explanation: 'The right-of-use asset is a lessee accounting concept. The lessor\'s revenue table tracks rental income, depreciation, and net book value of the owned asset.'
+      answer: 1,
+      explanation: 'RIAD stands for Rental Income And Depreciation \u2014 the revenue processing method for operating leases in Lendscape.'
     },
     {
-      q: 'How is depreciation calculated for an asset under an operating lease?',
-      options: [
-        'Reducing balance method only',
-        'Sum-of-years-digits method',
-        'Straight-line from cost to residual value over useful life',
-        'No depreciation is required'
-      ],
+      lesson: 1, type: 'choice',
+      q: 'Which day count convention does RIAD use for straight-line allocation?',
+      options: ['Actual/Actual', 'Actual/365', '30/360', 'Actual/360'],
       answer: 2,
-      explanation: 'The lessor depreciates the underlying asset on a straight-line basis from its cost to its estimated residual value over its useful life (IFRS 16 S84, ASC 842-30-35-5).'
+      explanation: 'RIAD uses the 30/360 day count convention, where each month is treated as 30 days and each year as 360 days.'
     },
+
+    // ---- Lesson 2: Income Recognition ----
     {
-      q: 'What accounting configuration method is used for operating lease income recognition?',
+      lesson: 2, type: 'choice',
+      q: 'How should rental income from an operating lease be recognised according to IFRS 16?',
       options: [
-        'EFFECTIVE_INTEREST_RATE',
-        'RENTAL_INCOME_AND_DEPRECIATION',
-        'CASH_BASIS_ACCOUNTING',
-        'FAIR_VALUE_THROUGH_PNL'
+        'Accelerated in the early periods',
+        'On a straight-line basis over the lease term',
+        'Only when cash is received',
+        'Deferred until lease end'
       ],
       answer: 1,
-      explanation: 'The RENTAL_INCOME_AND_DEPRECIATION method is configured in accounting-agreement-types for operating leases.'
+      explanation: 'IFRS 16 S81 requires lessors to recognise operating lease rental income on a straight-line basis over the lease term unless another systematic basis is more representative.'
     },
     {
-      q: 'Which charge-accounting-type applies to rental income in the straight-line method?',
-      options: [
-        'ACCRUAL_RENTAL_INCOME',
-        'STRAIGHT_LINE_RENTAL_INCOME',
-        'CASH_RENTAL_INCOME',
-        'DEFERRED_RENTAL_INCOME'
-      ],
-      answer: 1,
-      explanation: 'STRAIGHT_LINE_RENTAL_INCOME is the charge-accounting-type that recognises rental income evenly across the lease term.'
-    },
-    {
+      lesson: 2, type: 'choice',
       q: 'What happens to rental income recognition when collectibility is NOT probable under ASC 842?',
       options: [
         'Income is still recognised on a straight-line basis',
@@ -228,17 +207,7 @@ const QuizEngine = {
       explanation: 'When collectibility is not probable, ASC 842 limits income recognition to the lesser of straight-line income or cash collected.'
     },
     {
-      q: 'Under UK tax rules, which type of capital allowance typically applies to leased plant and machinery?',
-      options: [
-        'Annual Investment Allowance (AIA)',
-        'Structures and Buildings Allowance',
-        'Land Remediation Relief',
-        'Research & Development Allowance'
-      ],
-      answer: 0,
-      explanation: 'The Annual Investment Allowance (AIA) provides 100% first-year relief on qualifying plant and machinery expenditure, commonly used for leased assets in the UK.'
-    },
-    {
+      lesson: 2, type: 'choice',
       q: 'When an operating lease is modified, how should the lessor account for it under ASC 842?',
       options: [
         'Always treat as a new lease from inception',
@@ -250,6 +219,119 @@ const QuizEngine = {
       explanation: 'Under ASC 842-10-25-15, if a modification is not a separate contract, the lessor treats the modified lease as a new lease from the modification effective date.'
     },
     {
+      lesson: 2, type: 'choice',
+      q: 'What is the purpose of the TrackStraightLineAmount component in RIAD?',
+      options: [
+        'To calculate the effective interest rate',
+        'To manage daily rate allocation with rounding and final period true-up',
+        'To determine lease classification',
+        'To generate tax returns'
+      ],
+      answer: 1,
+      explanation: 'TrackStraightLineAmount is a stateful tracker that calculates daily rates, applies them to periods, manages rounding between periods, and performs a final period true-up so totals match exactly.'
+    },
+
+    // ---- Lesson 3: Depreciation & IDCs ----
+    {
+      lesson: 3, type: 'choice',
+      q: 'Under ASC 842, how are initial direct costs (IDCs) for an operating lease treated?',
+      options: [
+        'Expensed immediately at inception',
+        'Capitalised and amortised over the lease term on a straight-line basis',
+        'Added to the residual value of the asset',
+        'Deferred until the lease is terminated'
+      ],
+      answer: 1,
+      explanation: 'ASC 842-30-25-11c requires IDCs to be deferred and recognised as expense over the lease term on the same basis as lease income (straight-line).'
+    },
+    {
+      lesson: 3, type: 'choice',
+      q: 'How is depreciation calculated for an asset under an operating lease?',
+      options: [
+        'Reducing balance method only',
+        'Sum-of-years-digits method',
+        'Straight-line from cost to residual value over useful life',
+        'No depreciation is required'
+      ],
+      answer: 2,
+      explanation: 'The lessor depreciates the underlying asset on a straight-line basis from its cost to its estimated residual value over its useful life (IFRS 16 S84, ASC 842-30-35-5).'
+    },
+    {
+      lesson: 3, type: 'choice',
+      q: 'Under UK tax rules, which type of capital allowance typically applies to leased plant and machinery?',
+      options: [
+        'Annual Investment Allowance (AIA)',
+        'Structures and Buildings Allowance',
+        'Land Remediation Relief',
+        'Research & Development Allowance'
+      ],
+      answer: 0,
+      explanation: 'The Annual Investment Allowance (AIA) provides 100% first-year relief on qualifying plant and machinery expenditure, commonly used for leased assets in the UK.'
+    },
+    {
+      lesson: 3, type: 'calculation',
+      q: 'An asset costs <strong>\u00a380,000</strong> with a residual value of <strong>\u00a320,000</strong> and a useful life of <strong>48 months</strong>.<br>What is the <strong>monthly depreciation</strong>?',
+      answer: 1250,
+      tolerance: 1,
+      unit: '\u00a3',
+      explanation: 'Monthly depreciation = (\u00a380,000 \u2212 \u00a320,000) \u00f7 48 = \u00a360,000 \u00f7 48 = \u00a31,250 per month.'
+    },
+    {
+      lesson: 3, type: 'calculation',
+      q: 'Total rental income is <strong>\u00a336,000</strong> over a <strong>24-month</strong> lease term using the 30/360 convention.<br>What is the <strong>daily rate</strong>?',
+      answer: 50,
+      tolerance: 1,
+      unit: '\u00a3',
+      explanation: 'Total days = 24 \u00d7 30 = 720 days (30/360). Daily rate = \u00a336,000 \u00f7 720 = \u00a350 per day.'
+    },
+    {
+      lesson: 3, type: 'calculation',
+      q: 'Initial Direct Costs (IDCs) total <strong>\u00a33,600</strong> on a <strong>36-month</strong> operating lease.<br>What is the <strong>monthly IDC expense</strong>?',
+      answer: 100,
+      tolerance: 1,
+      unit: '\u00a3',
+      explanation: 'Monthly IDC expense = \u00a33,600 \u00f7 36 = \u00a3100 per month.'
+    },
+
+    // ---- Lesson 4: Revenue Table & Configuration ----
+    {
+      lesson: 4, type: 'choice',
+      q: 'In a revenue table for an operating lease, which of the following is typically NOT a column?',
+      options: [
+        'rental_income',
+        'depreciation',
+        'asset_net_book_value',
+        'lessee_right_of_use_asset'
+      ],
+      answer: 3,
+      explanation: 'The right-of-use asset is a lessee accounting concept. The lessor\'s revenue table tracks rental income, depreciation, and net book value of the owned asset.'
+    },
+    {
+      lesson: 4, type: 'choice',
+      q: 'What accounting configuration method is used for operating lease income recognition?',
+      options: [
+        'EFFECTIVE_INTEREST_RATE',
+        'RENTAL_INCOME_AND_DEPRECIATION',
+        'CASH_BASIS_ACCOUNTING',
+        'FAIR_VALUE_THROUGH_PNL'
+      ],
+      answer: 1,
+      explanation: 'The RENTAL_INCOME_AND_DEPRECIATION method is configured in accounting-agreement-types for operating leases.'
+    },
+    {
+      lesson: 4, type: 'choice',
+      q: 'Which charge-accounting-type applies to rental income in the straight-line method?',
+      options: [
+        'ACCRUAL_RENTAL_INCOME',
+        'STRAIGHT_LINE_RENTAL_INCOME',
+        'CASH_RENTAL_INCOME',
+        'DEFERRED_RENTAL_INCOME'
+      ],
+      answer: 1,
+      explanation: 'STRAIGHT_LINE_RENTAL_INCOME is the charge-accounting-type that recognises rental income evenly across the lease term.'
+    },
+    {
+      lesson: 4, type: 'choice',
       q: 'What does the "asset_cash_flow_event" column in the revenue table represent?',
       options: [
         'The lessee\'s payment schedule',
@@ -261,39 +343,7 @@ const QuizEngine = {
       explanation: 'The asset_cash_flow_event column records cash flow events related to the underlying asset itself, such as the initial purchase or final disposal/sale.'
     },
     {
-      q: 'What does RIAD stand for?',
-      options: [
-        'Revenue Interest And Depreciation',
-        'Rental Income And Depreciation',
-        'Recognised Income And Deductions',
-        'Revenue In Accounting Data'
-      ],
-      answer: 1,
-      explanation: 'RIAD stands for Rental Income And Depreciation — the revenue processing method for operating leases in Lendscape.'
-    },
-    {
-      q: 'Which day count convention does RIAD use for straight-line allocation?',
-      options: [
-        'Actual/Actual',
-        'Actual/365',
-        '30/360',
-        'Actual/360'
-      ],
-      answer: 2,
-      explanation: 'RIAD uses the 30/360 day count convention, where each month is treated as 30 days and each year as 360 days.'
-    },
-    {
-      q: 'What is the purpose of the TrackStraightLineAmount component in RIAD?',
-      options: [
-        'To calculate the effective interest rate',
-        'To manage daily rate allocation with rounding and final period true-up',
-        'To determine lease classification',
-        'To generate tax returns'
-      ],
-      answer: 1,
-      explanation: 'TrackStraightLineAmount is a stateful tracker that calculates daily rates, applies them to periods, manages rounding between periods, and performs a final period true-up so totals match exactly.'
-    },
-    {
+      lesson: 4, type: 'choice',
       q: 'In RIAD, what type of output record covers IDC amortisation?',
       options: [
         'ALIR (Asset Level Interest Revenue)',
@@ -306,114 +356,270 @@ const QuizEngine = {
     }
   ],
 
+  // State
   currentIndex: 0,
   score: 0,
+  lessonScores: {},
   answered: [],
 
   init() {
     this.currentIndex = 0;
     this.score = 0;
+    this.lessonScores = {};
+    for (let i = 1; i <= 4; i++) this.lessonScores[i] = { correct: 0, total: 0 };
+    this.questions.forEach(q => this.lessonScores[q.lesson].total++);
     this.answered = new Array(this.questions.length).fill(false);
-    this.render();
+    this.showWelcome();
   },
 
-  render() {
-    const container = document.getElementById('quiz-questions');
-    if (!container) return;
+  showWelcome() {
+    this._showScreen('quiz-welcome');
+  },
 
-    container.innerHTML = '';
-    this.questions.forEach((q, idx) => {
-      const div = document.createElement('div');
-      div.className = 'quiz-question';
-      div.id = 'question-' + idx;
+  start() {
+    this.currentIndex = 0;
+    this._showScreen('quiz-question-area');
+    this._updateProgress();
+    this.renderQuestion();
+  },
 
-      let optionsHtml = '';
-      q.options.forEach((opt, oi) => {
-        optionsHtml += `<button class="quiz-option" data-question="${idx}" data-option="${oi}">${opt}</button>`;
+  renderQuestion() {
+    const q = this.questions[this.currentIndex];
+    const area = document.getElementById('quiz-question-area');
+    const info = this.LESSON_INFO[q.lesson];
+
+    let html = `<div class="quiz-slide">
+      <div class="quiz-lesson-label"><i class="bi ${info.icon} me-1"></i>${info.name}</div>
+      <h5 class="mb-3">Question ${this.currentIndex + 1} of ${this.questions.length}</h5>
+      <p class="quiz-question-text">${q.q}</p>`;
+
+    if (q.type === 'calculation') {
+      html += `<div class="quiz-calc-group">
+        <div class="input-group mb-3">
+          <span class="input-group-text">${q.unit || '\u00a3'}</span>
+          <input type="number" class="form-control quiz-calc-input" id="calc-answer" placeholder="Your answer" step="any">
+        </div>
+        <button class="btn btn-primary" id="btn-check-calc"><i class="bi bi-calculator me-1"></i>Check Answer</button>
+      </div>`;
+    } else {
+      q.options.forEach((opt, i) => {
+        html += `<button class="quiz-option" data-option="${i}">${opt}</button>`;
       });
-
-      div.innerHTML = `
-        <h5>Question ${idx + 1} of ${this.questions.length}</h5>
-        <p class="mb-3">${q.q}</p>
-        ${optionsHtml}
-        <div class="quiz-feedback" id="feedback-${idx}"></div>
-      `;
-      container.appendChild(div);
-    });
-
-    // Attach listeners
-    document.querySelectorAll('.quiz-option').forEach(btn => {
-      btn.addEventListener('click', (e) => this.handleAnswer(e));
-    });
-
-    // Hide results
-    const results = document.getElementById('quiz-results');
-    if (results) results.classList.add('d-none');
-
-    // Show submit button
-    const submitBtn = document.getElementById('btn-submit-quiz');
-    if (submitBtn) {
-      submitBtn.classList.add('d-none');
-      submitBtn.addEventListener('click', () => this.showResults());
     }
+
+    html += `<div class="quiz-feedback" id="quiz-feedback"></div>
+      <button class="btn btn-primary btn-lg quiz-next-btn d-none" id="btn-next">
+        ${this._isLastInLesson() && this.currentIndex < this.questions.length - 1 ? 'See Lesson Results' : this.currentIndex === this.questions.length - 1 ? 'See Final Results' : 'Next'} <i class="bi bi-arrow-right ms-1"></i>
+      </button>
+    </div>`;
+
+    area.innerHTML = html;
+
+    if (q.type === 'calculation') {
+      document.getElementById('btn-check-calc').addEventListener('click', () => this.handleCalcAnswer());
+      document.getElementById('calc-answer').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') this.handleCalcAnswer();
+      });
+      document.getElementById('calc-answer').focus();
+    } else {
+      area.querySelectorAll('.quiz-option').forEach(btn => {
+        btn.addEventListener('click', (e) => this.handleChoiceAnswer(e));
+      });
+    }
+
+    document.getElementById('btn-next').addEventListener('click', () => this.next());
   },
 
-  handleAnswer(e) {
+  handleChoiceAnswer(e) {
+    if (this.answered[this.currentIndex]) return;
+    this.answered[this.currentIndex] = true;
+
     const btn = e.currentTarget;
-    const qIdx = parseInt(btn.dataset.question);
     const oIdx = parseInt(btn.dataset.option);
+    const q = this.questions[this.currentIndex];
+    const isCorrect = oIdx === q.answer;
 
-    if (this.answered[qIdx]) return;
-    this.answered[qIdx] = true;
+    if (isCorrect) {
+      this.score++;
+      this.lessonScores[q.lesson].correct++;
+    }
 
-    const question = this.questions[qIdx];
-    const isCorrect = oIdx === question.answer;
-
-    if (isCorrect) this.score++;
-
-    // Highlight options
-    const questionDiv = document.getElementById('question-' + qIdx);
-    questionDiv.querySelectorAll('.quiz-option').forEach((opt, i) => {
+    const area = document.getElementById('quiz-question-area');
+    area.querySelectorAll('.quiz-option').forEach((opt, i) => {
       opt.classList.add('disabled');
-      if (i === question.answer) opt.classList.add('correct');
+      if (i === q.answer) opt.classList.add('correct');
       if (i === oIdx && !isCorrect) opt.classList.add('incorrect');
     });
 
-    // Show feedback
-    const feedback = document.getElementById('feedback-' + qIdx);
-    feedback.className = 'quiz-feedback show ' + (isCorrect ? 'correct' : 'incorrect');
-    feedback.innerHTML = (isCorrect ? '<strong>Correct!</strong> ' : '<strong>Incorrect.</strong> ') + question.explanation;
+    this._showFeedback(isCorrect, q.explanation);
+    document.getElementById('btn-next').classList.remove('d-none');
+  },
 
-    // Check if all answered
-    if (this.answered.every(a => a)) {
-      const submitBtn = document.getElementById('btn-submit-quiz');
-      if (submitBtn) submitBtn.classList.remove('d-none');
+  handleCalcAnswer() {
+    if (this.answered[this.currentIndex]) return;
+
+    const input = document.getElementById('calc-answer');
+    const userAnswer = parseFloat(input.value);
+
+    if (isNaN(userAnswer) || input.value.trim() === '') {
+      input.classList.add('is-invalid');
+      return;
     }
+
+    this.answered[this.currentIndex] = true;
+    const q = this.questions[this.currentIndex];
+    const isCorrect = Math.abs(userAnswer - q.answer) <= (q.tolerance || 1);
+
+    if (isCorrect) {
+      this.score++;
+      this.lessonScores[q.lesson].correct++;
+    }
+
+    input.disabled = true;
+    document.getElementById('btn-check-calc').disabled = true;
+    input.classList.remove('is-invalid');
+    input.classList.add(isCorrect ? 'is-valid' : 'is-invalid');
+
+    this._showFeedback(isCorrect, q.explanation);
+    document.getElementById('btn-next').classList.remove('d-none');
+  },
+
+  next() {
+    const currentLesson = this.questions[this.currentIndex].lesson;
+    this.currentIndex++;
+
+    if (this.currentIndex >= this.questions.length) {
+      this.showResults();
+      return;
+    }
+
+    const nextLesson = this.questions[this.currentIndex].lesson;
+    if (nextLesson !== currentLesson) {
+      this.showInterstitial(currentLesson);
+    } else {
+      this._updateProgress();
+      this.renderQuestion();
+    }
+  },
+
+  showInterstitial(lessonNum) {
+    const info = this.LESSON_INFO[lessonNum];
+    const ls = this.lessonScores[lessonNum];
+    const pct = Math.round((ls.correct / ls.total) * 100);
+
+    let emoji, message;
+    if (pct === 100) { emoji = '\ud83c\udf1f'; message = 'Perfect! You\'re a lease legend!'; }
+    else if (pct >= 80) { emoji = '\ud83d\udc4f'; message = 'Impressive! You really know your stuff!'; }
+    else if (pct >= 50) { emoji = '\ud83d\udc4d'; message = 'Not bad! Room to grow though.'; }
+    else { emoji = '\ud83d\udcaa'; message = 'Keep learning \u2014 you\'ll get there!'; }
+
+    const nextInfo = this.LESSON_INFO[this.questions[this.currentIndex].lesson];
+
+    const area = document.getElementById('quiz-question-area');
+    area.innerHTML = `<div class="quiz-interstitial quiz-slide">
+      <div class="interstitial-emoji">${emoji}</div>
+      <h3>Lesson ${lessonNum} Complete!</h3>
+      <p class="interstitial-title">${info.name}</p>
+      <div class="interstitial-score">${ls.correct} / ${ls.total}</div>
+      <div class="interstitial-bar-track"><div class="interstitial-bar-fill" style="width:${pct}%"></div></div>
+      <p class="interstitial-message">${message}</p>
+      <button class="btn btn-primary btn-lg" id="btn-continue">
+        Continue to Lesson ${this.questions[this.currentIndex].lesson}: ${nextInfo.name} <i class="bi bi-arrow-right ms-1"></i>
+      </button>
+    </div>`;
+
+    document.getElementById('btn-continue').addEventListener('click', () => {
+      this._updateProgress();
+      this.renderQuestion();
+    });
   },
 
   showResults() {
     Progress.saveQuizScore(this.score, this.questions.length);
 
+    const total = this.questions.length;
+    const pct = Math.round((this.score / total) * 100);
+
+    let message, messageClass, emoji;
+    if (pct === 100) { message = 'Perfect score! You\'ve mastered operating lease accounting!'; messageClass = 'text-success'; emoji = '\ud83c\udf89'; }
+    else if (pct >= 90) { message = 'Excellent! Nearly flawless \u2014 are you sure you\'re not an accountant?'; messageClass = 'text-success'; emoji = '\ud83c\udf1f'; }
+    else if (pct >= 80) { message = 'Great work! Just a few gaps to fill. You\'re almost there!'; messageClass = 'text-primary'; emoji = '\ud83d\udc4f'; }
+    else if (pct >= 60) { message = 'Good effort! A quick review of the highlighted lessons will get you to the top.'; messageClass = 'text-warning-emphasis'; emoji = '\ud83d\udc4d'; }
+    else { message = 'Don\'t worry \u2014 even the best accountants had to start somewhere. Review and try again!'; messageClass = 'text-danger'; emoji = '\ud83d\udcaa'; }
+
+    // Per-lesson breakdown
+    let breakdownHtml = '<div class="row g-3 mt-3">';
+    for (let i = 1; i <= 4; i++) {
+      const ls = this.lessonScores[i];
+      const lPct = ls.total > 0 ? Math.round((ls.correct / ls.total) * 100) : 0;
+      const info = this.LESSON_INFO[i];
+
+      let cardClass, statusIcon, statusText;
+      if (lPct >= 80) { cardClass = 'quiz-lesson-score-good'; statusIcon = 'bi-check-circle-fill'; statusText = 'Excellent!'; }
+      else if (lPct >= 50) { cardClass = 'quiz-lesson-score-ok'; statusIcon = 'bi-exclamation-circle-fill'; statusText = 'Review recommended'; }
+      else { cardClass = 'quiz-lesson-score-weak'; statusIcon = 'bi-x-circle-fill'; statusText = 'Needs more study'; }
+
+      breakdownHtml += `<div class="col-md-6"><div class="quiz-lesson-score ${cardClass}">
+        <div class="d-flex justify-content-between align-items-start">
+          <div><h6 class="mb-1"><i class="bi ${info.icon} me-1"></i>Lesson ${i}</h6><p class="mb-1 lesson-name">${info.name}</p></div>
+          <span class="lesson-score-badge">${ls.correct}/${ls.total}</span>
+        </div>
+        <div class="lesson-score-bar-track"><div class="lesson-score-bar-fill ${cardClass}-bar" style="width:${lPct}%"></div></div>
+        <div class="lesson-score-status"><i class="bi ${statusIcon} me-1"></i>${statusText}</div>
+        ${lPct < 80 ? `<a href="${info.url}" class="btn btn-sm btn-outline-primary mt-2">Review Lesson <i class="bi bi-arrow-right ms-1"></i></a>` : ''}
+      </div></div>`;
+    }
+    breakdownHtml += '</div>';
+
+    this._showScreen('quiz-results');
     const results = document.getElementById('quiz-results');
-    if (!results) return;
-    results.classList.remove('d-none');
-
-    const pct = Math.round((this.score / this.questions.length) * 100);
-    let message = '';
-    if (pct === 100) message = 'Perfect score! Outstanding!';
-    else if (pct >= 80) message = 'Great job! You have a solid understanding.';
-    else if (pct >= 60) message = 'Good effort! Review the lessons for topics you missed.';
-    else message = 'Keep studying! Review the lessons and try again.';
-
-    results.innerHTML = `
-      <div class="score">${this.score} / ${this.questions.length}</div>
-      <p class="lead mt-2">${pct}%</p>
-      <p class="text-muted">${message}</p>
-      <button class="btn btn-primary mt-3" onclick="QuizEngine.init()">Retake Quiz</button>
-      <a href="../index.html" class="btn btn-outline-secondary mt-3 ms-2">Back to Home</a>
-    `;
+    results.innerHTML = `<div class="quiz-slide">
+      <div class="results-emoji">${emoji}</div>
+      <div class="score-circle"><div class="score-circle-inner">
+        <span class="score-value">${pct}%</span>
+        <span class="score-label">${this.score} of ${total} correct</span>
+      </div></div>
+      <p class="lead mt-3 ${messageClass}"><strong>${message}</strong></p>
+      <h4 class="mt-4 mb-2">Lesson Breakdown</h4>
+      ${breakdownHtml}
+      <div class="mt-4">
+        <button class="btn btn-primary btn-lg me-2" onclick="QuizEngine.init()"><i class="bi bi-arrow-clockwise me-1"></i>Retake Quiz</button>
+        <a href="../index.html" class="btn btn-outline-secondary btn-lg"><i class="bi bi-house me-1"></i>Back to Home</a>
+      </div>
+    </div>`;
 
     results.scrollIntoView({ behavior: 'smooth' });
+  },
+
+  _isLastInLesson() {
+    if (this.currentIndex >= this.questions.length - 1) return true;
+    return this.questions[this.currentIndex + 1].lesson !== this.questions[this.currentIndex].lesson;
+  },
+
+  _showScreen(screenId) {
+    ['quiz-welcome', 'quiz-question-area', 'quiz-results'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('d-none', id !== screenId);
+    });
+    const progressEl = document.getElementById('quiz-progress-area');
+    if (progressEl) progressEl.classList.toggle('d-none', screenId !== 'quiz-question-area');
+  },
+
+  _showFeedback(isCorrect, explanation) {
+    const feedback = document.getElementById('quiz-feedback');
+    feedback.className = 'quiz-feedback show ' + (isCorrect ? 'correct' : 'incorrect');
+    feedback.innerHTML = (isCorrect ? '<strong><i class="bi bi-check-circle me-1"></i>Correct!</strong> ' : '<strong><i class="bi bi-x-circle me-1"></i>Incorrect.</strong> ') + explanation;
+  },
+
+  _updateProgress() {
+    const bar = document.getElementById('quiz-progress-bar');
+    const label = document.getElementById('quiz-progress-label');
+    if (bar) {
+      const pct = Math.round((this.currentIndex / this.questions.length) * 100);
+      bar.style.width = pct + '%';
+      bar.setAttribute('aria-valuenow', pct);
+    }
+    if (label) label.textContent = `Question ${this.currentIndex + 1} of ${this.questions.length}`;
   }
 };
 

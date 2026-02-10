@@ -13,7 +13,7 @@ A companion learning website for operating lease accounting, covering lessor acc
 
 ## Interactive Features
 
-- **Quiz** - 17 multiple-choice questions with immediate feedback and score tracking
+- **Quiz** - 20 questions (multiple-choice + calculation) in a page-by-page format grouped by lesson, with per-lesson score breakdown and personalised feedback
 - **Calculator** - Straight-line lease calculator with depreciation/NBV schedule and Chart.js visualisation
 - **Progress Tracking** - localStorage-based lesson completion and quiz score history
 

@@ -39,23 +39,44 @@
   <div class="container my-4">
     <div class="quiz-container">
 
-      <div class="text-center mb-4">
-        <h1><i class="bi bi-patch-question-fill me-2"></i>Knowledge Quiz</h1>
-        <p class="lead text-muted">Test your understanding of operating lease accounting across all 4 lessons.</p>
-        <p>Answer all 13 questions, then view your score. You can retake the quiz as many times as you like.</p>
+      <!-- Progress Bar (hidden on welcome/results) -->
+      <div id="quiz-progress-area" class="d-none mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span id="quiz-progress-label" class="text-muted fw-bold">Question 1 of 20</span>
+        </div>
+        <div class="progress" style="height: 0.6rem;">
+          <div id="quiz-progress-bar" class="progress-bar" role="progressbar" style="width: 0%; transition: width 0.4s ease;"></div>
+        </div>
       </div>
 
-      <!-- Questions rendered by JS -->
-      <div id="quiz-questions"></div>
-
-      <!-- Submit button (shown after all answered) -->
-      <div class="text-center">
-        <button id="btn-submit-quiz" class="btn btn-primary btn-lg d-none">
-          <i class="bi bi-trophy me-1"></i> View Results
+      <!-- Welcome Screen -->
+      <div id="quiz-welcome" class="text-center">
+        <div class="quiz-welcome-icon"><i class="bi bi-patch-question-fill"></i></div>
+        <h1>Knowledge Quiz</h1>
+        <p class="lead text-muted">Test your understanding of operating lease accounting.</p>
+        <div class="quiz-welcome-features">
+          <div class="row g-3 justify-content-center my-4">
+            <div class="col-auto">
+              <div class="quiz-feature-badge"><i class="bi bi-collection me-1"></i>4 Lesson Sections</div>
+            </div>
+            <div class="col-auto">
+              <div class="quiz-feature-badge"><i class="bi bi-list-check me-1"></i>20 Questions</div>
+            </div>
+            <div class="col-auto">
+              <div class="quiz-feature-badge"><i class="bi bi-calculator me-1"></i>Calculation Challenges</div>
+            </div>
+          </div>
+        </div>
+        <p class="text-muted">Questions are grouped by lesson. After each section you'll see how you did before moving on.</p>
+        <button class="btn btn-primary btn-lg mt-3" onclick="QuizEngine.start()">
+          <i class="bi bi-play-fill me-1"></i> Start Quiz
         </button>
       </div>
 
-      <!-- Results -->
+      <!-- Question Area (single question at a time, rendered by JS) -->
+      <div id="quiz-question-area" class="d-none"></div>
+
+      <!-- Results (rendered by JS) -->
       <div id="quiz-results" class="quiz-results d-none"></div>
 
     </div>
