@@ -42,50 +42,50 @@
       <h1><i class="bi bi-1-circle-fill me-2"></i>What is an Operating Lease?</h1>
 
       <h2>Overview</h2>
-      <p>A <strong>lease</strong> is a contract that conveys the right to use an underlying asset for a period of time in exchange for consideration. Leases are classified into two main categories from the <strong>lessor's</strong> perspective:</p>
+      <p>A <strong>lease</strong> is simply a contract where one party (the owner) lets another party use an asset for a set period in return for regular payments. From the <strong>lessor's</strong> (owner's) perspective, leases fall into two categories:</p>
 
       <div class="row g-4 mb-4">
         <div class="col-md-6">
           <div class="concept-box success">
             <h5>Operating Lease</h5>
-            <p class="mb-1">The lessor <strong>retains</strong> substantially all risks and rewards of ownership. The asset remains on the lessor's balance sheet.</p>
+            <p class="mb-1">Think of it like renting out your car &mdash; you still own it, still bear the risk if it breaks down, and still benefit from selling it later. The asset stays on <strong>your</strong> books.</p>
             <ul class="mb-0">
-              <li>Lessor recognises the asset</li>
-              <li>Rental income recognised over the lease term</li>
-              <li>Lessor depreciates the asset</li>
+              <li>The lessor keeps the asset on their balance sheet</li>
+              <li>Rental income is spread evenly over the lease</li>
+              <li>The lessor records the asset losing value over time (depreciation)</li>
             </ul>
           </div>
         </div>
         <div class="col-md-6">
           <div class="concept-box warning">
             <h5>Finance Lease</h5>
-            <p class="mb-1">The lease <strong>transfers</strong> substantially all risks and rewards of ownership to the lessee.</p>
+            <p class="mb-1">More like a hire-purchase &mdash; the user is effectively buying the asset over time. By the end, ownership has practically shifted to them.</p>
             <ul class="mb-0">
-              <li>Lessor derecognises the asset</li>
-              <li>Recognises a net investment in the lease</li>
-              <li>Finance income recognised over the lease term</li>
+              <li>The lessor removes the asset from their books</li>
+              <li>Instead, they record what the lessee owes them (a receivable)</li>
+              <li>Interest income is earned over the lease term</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <h2>Lease Classification Criteria</h2>
-      <p>Under both IFRS 16 and ASC 842, the classification depends on whether the lease transfers substantially all the risks and rewards incidental to ownership. Key indicators of a <strong>finance lease</strong> include:</p>
+      <h2>How Do You Decide Which Type?</h2>
+      <p>Both IFRS 16 and ASC 842 ask the same basic question: <em>does this lease essentially hand over ownership to the user?</em> If any of these signs are present, it is likely a <strong>finance lease</strong>:</p>
 
       <ol>
-        <li>Transfer of ownership by end of lease term</li>
-        <li>Purchase option at a price sufficiently lower than fair value that exercise is reasonably certain (sometimes called a &ldquo;bargain purchase option&rdquo;)</li>
-        <li>Lease term is for the <strong>major part</strong> of the asset's economic life</li>
-        <li>Present value of lease payments amounts to <strong>substantially all</strong> of the fair value</li>
-        <li>The asset is of a specialised nature that only the lessee can use without major modifications</li>
+        <li>Ownership transfers to the lessee by the end of the lease</li>
+        <li>The lessee can buy the asset at a bargain price, so they almost certainly will</li>
+        <li>The lease covers <strong>most</strong> of the asset's useful life</li>
+        <li>The total payments (in today's money) add up to <strong>nearly all</strong> of the asset's value</li>
+        <li>The asset is so specialised that only the lessee can realistically use it</li>
       </ol>
 
       <div class="concept-box">
-        <strong>Key Point:</strong> If none of these criteria are met, the lease is classified as an <strong>operating lease</strong>. The classification is made at the <strong>inception date</strong> of the lease and is only reassessed if there is a lease modification.
+        <strong>Key Point:</strong> If <strong>none</strong> of the above apply, the lease is an <strong>operating lease</strong>. You decide the classification when the lease starts (the &ldquo;inception date&rdquo;), and only revisit it if the lease terms are changed later.
       </div>
 
-      <h2>Lessor Accounting for Operating Leases</h2>
-      <p>When a lease is classified as an operating lease, the lessor:</p>
+      <h2>What Does the Lessor Actually Do?</h2>
+      <p>When a lease is classified as an operating lease, the lessor's accounting is relatively simple:</p>
 
       <table class="table example-table">
         <thead>
@@ -101,21 +101,21 @@
           </tr>
           <tr>
             <td>Rental income</td>
-            <td>Recognised on a <strong>straight-line basis</strong> over the lease term (or another systematic basis if more representative)</td>
+            <td>Spread evenly over the lease term (<strong>straight-line</strong>), regardless of when cash is actually received</td>
           </tr>
           <tr>
             <td>Depreciation</td>
-            <td>Asset depreciated from cost to residual value over its useful life</td>
+            <td>The asset loses value over time &mdash; this cost is recorded evenly over the asset's useful life</td>
           </tr>
           <tr>
             <td>Initial Direct Costs (IDCs)</td>
-            <td>Added to the carrying amount of the asset and expensed over the lease term</td>
+            <td>Set-up costs (like broker fees) are added to the asset value and gradually expensed over the lease</td>
           </tr>
         </tbody>
       </table>
 
       <h2>RIAD: Rental Income And Depreciation</h2>
-      <p>In Lendscape, the operating lease revenue processing method is known as <strong>RIAD</strong> &mdash; <strong>Rental Income And Depreciation</strong>. This is the revenue engine that implements straight-line recognition for operating leases, as distinct from the <strong>EIR</strong> (Effective Interest Rate) method used for finance leases.</p>
+      <p>In Lendscape, operating leases are processed by a method called <strong>RIAD</strong> &mdash; short for <strong>Rental Income And Depreciation</strong>. It handles the even spreading of income and depreciation. This is different from <strong>EIR</strong> (Effective Interest Rate), which is used for finance leases and works more like compound interest.</p>
 
       <table class="table example-table">
         <thead>
@@ -185,10 +185,10 @@
 
       <h2>Key Takeaways</h2>
       <ul>
-        <li>An operating lease does <strong>not</strong> transfer substantially all risks and rewards of ownership</li>
-        <li>The lessor keeps the asset on their balance sheet and depreciates it</li>
-        <li>Rental income is typically recognised on a straight-line basis</li>
-        <li>Both IFRS 16 and ASC 842 govern lessor accounting for operating leases</li>
+        <li>In an operating lease, the owner keeps the asset &mdash; they bear the risks and enjoy the rewards</li>
+        <li>The asset stays on the lessor's balance sheet and loses value (depreciates) over time</li>
+        <li>Rental income is spread evenly (straight-line) over the lease, no matter when cash arrives</li>
+        <li>The rules come from IFRS 16 (international) and ASC 842 (US)</li>
         <li>In Lendscape, the operating lease method is called <strong>RIAD</strong> (Rental Income And Depreciation), distinct from EIR used for finance leases</li>
       </ul>
 

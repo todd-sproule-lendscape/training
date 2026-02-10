@@ -42,10 +42,10 @@
       <h1><i class="bi bi-4-circle-fill me-2"></i>Revenue Table &amp; Configuration</h1>
 
       <h2>What is the Revenue Table?</h2>
-      <p>The <strong>revenue table</strong> is the core data structure that drives the accounting entries for a lease. It contains period-by-period calculations for income, depreciation, net book value, and cash flows. Each row represents a single accounting period.</p>
+      <p>Think of the <strong>revenue table</strong> as a spreadsheet that shows what happens financially in each period of a lease. Every row is one accounting period, and the columns show things like how much income was earned, how much the asset depreciated, and what its current value is.</p>
 
       <h2>Standard Revenue Table Columns</h2>
-      <p>The following columns are common to all lease types:</p>
+      <p>These columns appear for every lease, whether operating or finance:</p>
 
       <div class="table-responsive">
         <table class="table example-table">
@@ -66,8 +66,8 @@
         </table>
       </div>
 
-      <h2>New Operating Lease Columns</h2>
-      <p>Operating leases introduce additional columns to the revenue table:</p>
+      <h2>Extra Columns for Operating Leases</h2>
+      <p>Operating leases need a few more columns to track things that don't apply to finance leases:</p>
 
       <div class="table-responsive">
         <table class="table example-table">
@@ -81,23 +81,23 @@
           <tbody>
             <tr>
               <td><code>asset_cash_flow_event</code></td>
-              <td>Cash flows related to the underlying asset</td>
-              <td>Tracks initial purchase cost and final disposal/sale proceeds of the leased asset</td>
+              <td>Money spent on or received for the asset itself</td>
+              <td>Records when the lessor buys the asset at the start and sells it at the end</td>
             </tr>
             <tr>
               <td><code>rental_income_cash_flow_event</code></td>
-              <td>Cash received for rental payments</td>
-              <td>Records actual cash received from the lessee each period (may differ from straight-line income)</td>
+              <td>Actual rent money received</td>
+              <td>The cash the tenant actually pays each period &mdash; this can differ from the straight-line income figure</td>
             </tr>
             <tr>
               <td><code>charge_cash_flow_event</code></td>
-              <td>Cash flows for charges (e.g., IDCs)</td>
-              <td>Tracks cash payments related to initial direct costs and other charges</td>
+              <td>Cash for fees and charges (e.g., IDCs)</td>
+              <td>Records payments for set-up costs like broker fees or legal expenses</td>
             </tr>
             <tr>
               <td><code>rental_prepayment_or_accrual</code></td>
-              <td>Balance sheet prepayment or accrual</td>
-              <td>The cumulative difference between cash received and straight-line income recognised (positive = prepayment, negative = accrual)</td>
+              <td>Running difference between cash and income</td>
+              <td>If you've received more cash than income recorded, that's a prepayment (positive). If less, it's an accrual (negative). Over the full lease, this balances to zero.</td>
             </tr>
           </tbody>
         </table>
@@ -143,7 +143,7 @@
       <p class="standard-ref">Depreciation: (&pound;60,000 &minus; &pound;12,000) &divide; 30 months = &pound;1,600/month. IDC: &pound;900 &divide; 3 = &pound;300/month.</p>
 
       <h2>RIAD Output Records: ALIR &amp; ALCR</h2>
-      <p>The RIAD revenue processing method produces two types of output records that populate the revenue table:</p>
+      <p>When RIAD runs, it produces two types of records that feed into the revenue table. Think of them as two &ldquo;building blocks&rdquo; that get combined to form each row:</p>
 
       <div class="row g-3 mb-3">
         <div class="col-md-6">
@@ -225,13 +225,13 @@
       </div>
 
       <div class="concept-box warning">
-        <strong>Note:</strong> Each period generates one ALIR record for the core lease and one ALCR record per charge. The revenue table row is assembled by combining these records for the same period.
+        <strong>How they fit together:</strong> Each period gets one ALIR (for the main lease numbers) and one ALCR per charge (e.g., one for IDCs). The revenue table row is simply these records combined side by side.
       </div>
 
       <h2>System Configuration</h2>
 
       <h3>accounting-agreement-types</h3>
-      <p>The accounting agreement type determines which accounting method is applied to a lease. For operating leases:</p>
+      <p>This setting tells the system <em>which accounting method</em> to use for a lease. For operating leases, it's always:</p>
 
       <div class="concept-box success">
         <h5>RENTAL_INCOME_AND_DEPRECIATION</h5>
@@ -244,7 +244,7 @@
       </div>
 
       <h3>charge-accounting-types</h3>
-      <p>Each accounting charge has a type that determines how it is calculated and posted. The key types for operating leases are:</p>
+      <p>Each charge (rental income, depreciation, IDC) has its own type that controls how it's calculated. The three types you'll see for operating leases:</p>
 
       <div class="table-responsive">
         <table class="table example-table">
@@ -271,7 +271,7 @@
         </table>
       </div>
 
-      <h3>Configuration Flow</h3>
+      <h3>How It All Connects</h3>
       <div class="concept-box">
         <ol class="mb-0">
           <li><strong>Lease Agreement</strong> is linked to an <strong>accounting-agreement-type</strong> (e.g., RENTAL_INCOME_AND_DEPRECIATION)</li>

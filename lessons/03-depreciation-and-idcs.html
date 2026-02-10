@@ -42,7 +42,7 @@
       <h1><i class="bi bi-3-circle-fill me-2"></i>Depreciation &amp; Initial Direct Costs</h1>
 
       <h2>Straight-Line Depreciation</h2>
-      <p>Under an operating lease, the lessor retains the underlying asset on their balance sheet and depreciates it. The standard method is <strong>straight-line depreciation</strong> from cost to residual value over the asset's useful life.</p>
+      <p>Since the lessor still owns the asset, they need to account for it losing value over time. The simplest way is <strong>straight-line depreciation</strong> &mdash; you take how much value the asset will lose in total, and spread that cost evenly over its useful life.</p>
 
       <div class="concept-box">
         <h5>Formula</h5>
@@ -63,8 +63,8 @@
       </table>
       <p class="standard-ref">(&pound;100,000 &minus; &pound;20,000) &divide; 60 = &pound;1,333.33 per month</p>
 
-      <h2>Useful Life Determination</h2>
-      <p>The useful life is determined with reference to the following standards:</p>
+      <h2>How Long Do You Depreciate For?</h2>
+      <p>The &ldquo;useful life&rdquo; is how long you expect the asset to be economically usable. The accounting standards say:</p>
 
       <div class="row g-3 mb-3">
         <div class="col-md-6">
@@ -82,11 +82,11 @@
       </div>
 
       <div class="concept-box warning">
-        <strong>Important:</strong> The useful life may be longer than the lease term. The depreciation period is based on the asset's economic useful life, not the lease term. This is a key distinction from IDC amortisation.
+        <strong>Watch out:</strong> The useful life is often <strong>longer</strong> than the lease itself. For example, a machine might last 10 years but the lease is only 5. You depreciate over 10 years (the full useful life), not 5. This is different from IDCs, which are spread over the lease term only.
       </div>
 
       <h2>RIAD Daily Rate Allocation</h2>
-      <p>In the RIAD method, depreciation (and rental income, and IDCs) are all allocated using a <strong>daily rate</strong> approach with a stateful tracker called <strong>TrackStraightLineAmount</strong>:</p>
+      <p>Rather than working in monthly chunks, RIAD breaks everything down to a <strong>daily rate</strong>. A component called <strong>TrackStraightLineAmount</strong> handles this for depreciation, rental income, and IDCs alike. Here's how it works:</p>
 
       <div class="concept-box">
         <h5>How TrackStraightLineAmount Works</h5>
@@ -113,7 +113,7 @@
       <p class="standard-ref">The same daily rate approach is used for rental income and IDC amortisation, each with their own TrackStraightLineAmount tracker.</p>
 
       <h2>Initial Direct Costs (IDCs)</h2>
-      <p>Initial Direct Costs are incremental costs directly attributable to negotiating and arranging a lease. Examples include:</p>
+      <p>IDCs are the costs you only incur <em>because</em> you set up this lease. If the lease hadn't happened, you wouldn't have paid them. Common examples:</p>
       <ul>
         <li>Commissions paid to brokers or agents</li>
         <li>Legal fees for lease negotiation</li>
@@ -124,9 +124,9 @@
         <h5>IDC Treatment for Operating Leases</h5>
         <p>Under both IFRS 16 S83 and ASC 842-30-25-11c:</p>
         <ul class="mb-0">
-          <li>IDCs are <strong>added to the carrying amount</strong> of the underlying asset</li>
-          <li>They are then <strong>expensed over the lease term</strong> on a straight-line basis (same basis as rental income)</li>
-          <li>This differs from depreciation, which is over the <strong>useful life</strong> of the asset</li>
+          <li>IDCs get added onto the asset's value on the balance sheet</li>
+          <li>They are then gradually expensed over the <strong>lease term</strong> (same even pace as rental income)</li>
+          <li>This is different from depreciation, which runs over the asset's full <strong>useful life</strong> &mdash; often longer</li>
         </ul>
       </div>
 
@@ -164,7 +164,7 @@
       </table>
 
       <h2>Tax Accounting Overview</h2>
-      <p>Tax treatment of leased assets can differ significantly from the accounting treatment. Below is a high-level overview:</p>
+      <p>The way you depreciate an asset for your financial statements is often <strong>not</strong> the same as how the tax authorities allow you to deduct it. Here's a quick summary of the key tax rules:</p>
 
       <h3>UK &mdash; Capital Allowances</h3>
       <div class="concept-box">

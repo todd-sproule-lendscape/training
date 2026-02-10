@@ -42,7 +42,7 @@
       <h1><i class="bi bi-2-circle-fill me-2"></i>Income Recognition</h1>
 
       <h2>Straight-Line Recognition</h2>
-      <p>The core principle for operating lease income recognition is straightforward: rental income is recognised on a <strong>straight-line basis</strong> over the lease term.</p>
+      <p>The main idea is simple: even if the tenant pays different amounts each month, the lessor records the same amount of income every period. This is called <strong>straight-line</strong> recognition &mdash; you take the total rent over the whole lease and divide it evenly.</p>
 
       <div class="concept-box">
         <h5>IFRS 16 S81</h5>
@@ -55,7 +55,7 @@
       </div>
 
       <h3>Example: Straight-Line Rental Income</h3>
-      <p>Consider a 36-month operating lease with the following payment structure:</p>
+      <p>Here's a 36-month lease where the rent goes up each year, but the income recorded stays the same every month:</p>
 
       <table class="table example-table">
         <thead>
@@ -97,7 +97,7 @@
       <p class="standard-ref">Total rental: (12 &times; &pound;1,000) + (12 &times; &pound;1,200) + (12 &times; &pound;1,300) = &pound;42,000. Straight-line = &pound;42,000 &divide; 36 = &pound;1,167/month.</p>
 
       <h2>30/360 Day Count Convention</h2>
-      <p>In the RIAD method, straight-line allocation uses a <strong>daily rate</strong> approach with the <strong>30/360 day count convention</strong>, where each month is treated as 30 days and each year as 360 days:</p>
+      <p>To keep things simple, RIAD pretends every month has exactly 30 days and every year has 360 days. This is called the <strong>30/360 convention</strong>. It makes the maths cleaner &mdash; instead of worrying about February having 28 days, every month is the same:</p>
 
       <div class="concept-box">
         <h5>Daily Rate Formula</h5>
@@ -115,7 +115,7 @@
       </ul>
 
       <h2>Revenue Processing Scenarios</h2>
-      <p>The RIAD method generates revenue records for different processing scenarios throughout the lease lifecycle:</p>
+      <p>Throughout a lease's life, different things happen &mdash; it starts, regular periods pass, and it eventually ends. RIAD has a specific record type for each stage:</p>
 
       <table class="table example-table">
         <thead>
@@ -153,29 +153,29 @@
       </table>
 
       <div class="concept-box warning">
-        <strong>Final Period True-Up:</strong> On the last period, the system recognises all remaining balances rather than using the daily rate. This ensures that the total recognised over the life of the lease equals the original amount exactly, with no rounding residue.
+        <strong>Final Period True-Up:</strong> Because of rounding, small amounts can be left over. In the very last period, the system sweeps up whatever remains so the grand total comes out exactly right &mdash; no pennies lost or gained.
       </div>
 
       <h2>Variable Lease Payments</h2>
-      <p>Variable lease payments are payments that depend on an index, rate, or usage. Under IFRS 16 and ASC 842:</p>
+      <p>Some leases have payments that change based on things like inflation, interest rates, or how much the asset is used. The accounting treatment depends on whether the payments are truly unpredictable or just structured to look variable:</p>
 
       <div class="row g-3 mb-3">
         <div class="col-md-6">
           <div class="concept-box success">
             <h5>In-Substance Fixed Payments</h5>
-            <p class="mb-0">Payments that are structured as variable but are in substance unavoidable are included in lease payments and recognised straight-line.</p>
+            <p class="mb-0">Some payments look variable on paper but the lessee has no realistic way to avoid them. These are treated just like fixed rent &mdash; spread evenly over the lease.</p>
           </div>
         </div>
         <div class="col-md-6">
           <div class="concept-box warning">
             <h5>True Variable Payments</h5>
-            <p class="mb-0">Payments based on usage or performance (e.g., percentage of sales) are <strong>not</strong> included in the lease measurement and are recognised as income when the triggering event occurs.</p>
+            <p class="mb-0">Payments tied to actual usage or performance (e.g., a percentage of the lessee's sales) are <strong>not</strong> included upfront. They are only recorded as income when the event actually happens.</p>
           </div>
         </div>
       </div>
 
       <h2>Lease Modifications</h2>
-      <p>When an operating lease is modified, the lessor's accounting depends on whether the modification is treated as a separate contract:</p>
+      <p>Sometimes a lease is changed mid-way &mdash; maybe the term is extended or the rent changes. How the lessor accounts for this depends on whether it counts as a brand new deal or just a tweak to the existing one:</p>
 
       <div class="concept-box">
         <h5>ASC 842-10-25-15 &mdash; Modification Accounting</h5>
@@ -197,14 +197,14 @@
         <li>Maintains unearned balance continuity across the modification boundary</li>
       </ol>
 
-      <p>A modification is treated as a <strong>separate contract</strong> if it:</p>
+      <p>A modification is treated as a <strong>separate contract</strong> (i.e., a completely new deal) if <strong>both</strong> of these are true:</p>
       <ul>
-        <li>Grants an additional right of use not included in the original lease, <strong>and</strong></li>
-        <li>The consideration increases commensurate with the standalone price of the additional right of use</li>
+        <li>The lessee gets something extra that wasn't in the original lease (e.g., an additional asset), <strong>and</strong></li>
+        <li>They pay a fair price for it &mdash; roughly what it would cost on its own</li>
       </ul>
 
-      <h2>Collectibility Considerations</h2>
-      <p>Collectibility affects how income is recognised:</p>
+      <h2>What If the Tenant Can't Pay?</h2>
+      <p>If there's doubt about whether the lessee will actually pay, the rules change:</p>
 
       <table class="table example-table">
         <thead>
@@ -230,7 +230,7 @@
       </table>
 
       <div class="concept-box warning">
-        <strong>Important:</strong> Under IFRS 16, the standard does not explicitly address collectibility in the same way as ASC 842. However, expected credit losses on lease receivables are addressed under IFRS 9.
+        <strong>Note:</strong> IFRS 16 doesn't spell out collectibility rules the same way ASC 842 does. Instead, any expected losses on lease receivables are handled under a separate standard (IFRS 9 &mdash; Financial Instruments).
       </div>
 
       <div class="source-ref">
@@ -245,7 +245,7 @@
       <h2>Key Takeaways</h2>
       <ul>
         <li>Rental income is recognised on a <strong>straight-line basis</strong> over the lease term</li>
-        <li>Step-rent structures still result in even income recognition through straight-lining</li>
+        <li>Even if the rent goes up each year, the income you record each month stays the same</li>
         <li>Variable payments based on usage are recognised when the event occurs, not straight-lined</li>
         <li>Lease modifications (if not a separate contract) are treated as a new lease from the modification date</li>
         <li>When collectibility is not probable, income recognition is limited to cash collected</li>
