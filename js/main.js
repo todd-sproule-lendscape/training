@@ -1,6 +1,72 @@
 /* ===== Operating Lease Training - Main JS ===== */
 
 // ---------------------------------------------------------------------------
+// Authentication (front-end password gate)
+// ---------------------------------------------------------------------------
+// SECURITY NOTE: This is front-end-only protection intended to discourage
+// casual, non-technical users from accessing the site without a password.
+// It is NOT strong security. The password hash is visible in source code and
+// a determined developer could bypass this entirely. For real security, use
+// server-side authentication or hosting-level access controls (e.g. HTTP
+// Basic Auth, Cloudflare Access, Netlify Identity).
+//
+// HOW TO CHANGE THE PASSWORD:
+//   1. Open a browser console (F12 → Console) and run:
+//        crypto.subtle.digest('SHA-256', new TextEncoder().encode('YOUR_NEW_PASSWORD'))
+//          .then(buf => console.log(Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('')));
+//   2. Copy the hex string printed in the console.
+//   3. Replace the PASSWORD_HASH value below with the new hex string.
+//
+// HOW TO DISABLE LOGIN PROTECTION:
+//   1. Remove the Auth-guard <script> tags from every HTML file's <head>.
+//   2. On index.html, remove the #login-section div and the style="display:none"
+//      from #site-content.
+//   3. Optionally remove this Auth object from main.js.
+// ---------------------------------------------------------------------------
+const Auth = {
+  STORAGE_KEY: 'ol_training_auth',
+
+  // SHA-256 hash of the shared password (ask your administrator for the password)
+  PASSWORD_HASH: 'a040597aabf7b482d9c70cec61cd9273669244ea2e8312df4bb7b6fd4d21a107',
+
+  /** Hash a plaintext string using SHA-256 via the Web Crypto API */
+  async hashPassword(password) {
+    const data = new TextEncoder().encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    return Array.from(new Uint8Array(hashBuffer))
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('');
+  },
+
+  /** Verify a password against the stored hash. Returns true/false. */
+  async verify(password) {
+    const hash = await this.hashPassword(password);
+    return hash === this.PASSWORD_HASH;
+  },
+
+  /** Check if the user is currently logged in */
+  isLoggedIn() {
+    return localStorage.getItem(this.STORAGE_KEY) === 'true';
+  },
+
+  /** Set login state in localStorage */
+  login() {
+    localStorage.setItem(this.STORAGE_KEY, 'true');
+  },
+
+  /** Clear login state and redirect to the homepage/login page */
+  logout() {
+    localStorage.removeItem(this.STORAGE_KEY);
+    const path = window.location.pathname;
+    if (path.includes('/lessons/') || path.includes('/quiz/') || path.includes('/calculator/')) {
+      window.location.href = '../index.html';
+    } else {
+      window.location.href = 'index.html';
+    }
+  }
+};
+
+// ---------------------------------------------------------------------------
 // Progress Tracking (localStorage)
 // ---------------------------------------------------------------------------
 const Progress = {

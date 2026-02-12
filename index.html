@@ -10,158 +10,216 @@
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="index.html"><i class="bi bi-journal-bookmark-fill me-2"></i>Operating Lease Training</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Lessons</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="lessons/01-what-is-operating-lease.html">1. What is an Operating Lease?</a></li>
-              <li><a class="dropdown-item" href="lessons/02-income-recognition.html">2. Income Recognition</a></li>
-              <li><a class="dropdown-item" href="lessons/03-depreciation-and-idcs.html">3. Depreciation &amp; IDCs</a></li>
-              <li><a class="dropdown-item" href="lessons/04-revenue-table.html">4. Revenue Table</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="quiz/quiz.html">Quiz</a></li>
-          <li class="nav-item"><a class="nav-link" href="calculator/calculator.html">Calculator</a></li>
-        </ul>
+  <!-- Login Section (shown when not authenticated) -->
+  <div id="login-section" class="login-page">
+    <div class="login-card">
+      <div class="login-brand">
+        <i class="bi bi-journal-bookmark-fill"></i>
+        <h2>Operating Lease Training</h2>
+        <p>Please enter the password to continue</p>
       </div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero text-center">
-    <div class="container">
-      <h1><i class="bi bi-building me-2"></i>Operating Lease Training</h1>
-      <p class="lead">Master operating lease accounting for lessors under IFRS 16 and ASC 842.</p>
-      <p>Lessons covering income recognition, depreciation, revenue tables, and more.</p>
-    </div>
-  </section>
-
-  <div class="container">
-
-    <!-- Progress -->
-    <div class="progress-section">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <h5 class="mb-0"><i class="bi bi-bar-chart-fill me-2"></i>Your Progress</h5>
-        <span id="progress-label" class="text-muted">0% complete</span>
-      </div>
-      <div class="progress">
-        <div class="progress-bar bg-success" id="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-      </div>
-    </div>
-
-    <!-- Module Cards -->
-    <div class="row g-4 mb-4">
-
-      <!-- Lesson 1 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card module-card h-100">
-          <div class="card-header bg-primary text-white">Lesson 1</div>
-          <div class="card-body">
-            <h5 class="card-title">What is an Operating Lease?</h5>
-            <p class="card-text">Understand the distinction between operating and finance leases, and the lessor's accounting perspective.</p>
-            <span class="badge bg-success d-none" id="badge-lesson-1"><i class="bi bi-check-circle me-1"></i>Completed</span>
-          </div>
-          <div class="card-footer bg-white border-0">
-            <a href="lessons/01-what-is-operating-lease.html" class="btn btn-primary w-100">Start Lesson</a>
-          </div>
+      <form id="login-form" autocomplete="off">
+        <div class="mb-3">
+          <label for="login-password" class="form-label">Password</label>
+          <input type="password" class="form-control form-control-lg" id="login-password" placeholder="Enter password" required autofocus>
+          <div class="login-error" id="login-error">Incorrect password. Please try again.</div>
         </div>
-      </div>
-
-      <!-- Lesson 2 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card module-card h-100">
-          <div class="card-header bg-primary text-white">Lesson 2</div>
-          <div class="card-body">
-            <h5 class="card-title">Income Recognition</h5>
-            <p class="card-text">Learn how to recognise rental income under IFRS 16 and ASC 842, including modifications and collectibility.</p>
-            <span class="badge bg-success d-none" id="badge-lesson-2"><i class="bi bi-check-circle me-1"></i>Completed</span>
-          </div>
-          <div class="card-footer bg-white border-0">
-            <a href="lessons/02-income-recognition.html" class="btn btn-primary w-100">Start Lesson</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Lesson 3 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card module-card h-100">
-          <div class="card-header bg-primary text-white">Lesson 3</div>
-          <div class="card-body">
-            <h5 class="card-title">Depreciation &amp; Initial Direct Costs</h5>
-            <p class="card-text">Explore straight-line depreciation, residual values, IDC treatment, and tax accounting basics.</p>
-            <span class="badge bg-success d-none" id="badge-lesson-3"><i class="bi bi-check-circle me-1"></i>Completed</span>
-          </div>
-          <div class="card-footer bg-white border-0">
-            <a href="lessons/03-depreciation-and-idcs.html" class="btn btn-primary w-100">Start Lesson</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Lesson 4 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card module-card h-100">
-          <div class="card-header bg-info text-dark">Lesson 4</div>
-          <div class="card-body">
-            <h5 class="card-title">Revenue Table &amp; Configuration</h5>
-            <p class="card-text">Understand the revenue table structure, new operating lease columns, and system configuration.</p>
-            <span class="badge bg-success d-none" id="badge-lesson-4"><i class="bi bi-check-circle me-1"></i>Completed</span>
-          </div>
-          <div class="card-footer bg-white border-0">
-            <a href="lessons/04-revenue-table.html" class="btn btn-primary w-100">Start Lesson</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Quiz -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card module-card h-100">
-          <div class="card-header bg-warning text-dark">Assessment</div>
-          <div class="card-body">
-            <h5 class="card-title">Knowledge Quiz</h5>
-            <p class="card-text">Test your understanding with 20 multiple-choice questions covering all lessons.</p>
-            <span class="badge bg-success d-none" id="badge-quiz"><i class="bi bi-trophy me-1"></i></span>
-          </div>
-          <div class="card-footer bg-white border-0">
-            <a href="quiz/quiz.html" class="btn btn-warning w-100">Take Quiz</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Calculator -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card module-card h-100">
-          <div class="card-header bg-success text-white">Tool</div>
-          <div class="card-body">
-            <h5 class="card-title">Lease Calculator</h5>
-            <p class="card-text">Calculate straight-line rental income, depreciation, and view the amortisation schedule.</p>
-          </div>
-          <div class="card-footer bg-white border-0">
-            <a href="calculator/calculator.html" class="btn btn-success w-100">Open Calculator</a>
-          </div>
-        </div>
-      </div>
-
+        <button type="submit" class="btn btn-primary btn-lg w-100">
+          <i class="bi bi-unlock me-1"></i>Log in
+        </button>
+      </form>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="text-center">
+  <!-- Site Content (hidden until authenticated) -->
+  <div id="site-content" style="display:none">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><i class="bi bi-journal-bookmark-fill me-2"></i>Operating Lease Training</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Lessons</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="lessons/01-what-is-operating-lease.html">1. What is an Operating Lease?</a></li>
+                <li><a class="dropdown-item" href="lessons/02-income-recognition.html">2. Income Recognition</a></li>
+                <li><a class="dropdown-item" href="lessons/03-depreciation-and-idcs.html">3. Depreciation &amp; IDCs</a></li>
+                <li><a class="dropdown-item" href="lessons/04-revenue-table.html">4. Revenue Table</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="quiz/quiz.html">Quiz</a></li>
+            <li class="nav-item"><a class="nav-link" href="calculator/calculator.html">Calculator</a></li>
+            <li class="nav-item ms-lg-2"><a class="nav-link" href="#" onclick="Auth.logout();return false;"><i class="bi bi-box-arrow-right me-1"></i>Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero text-center">
+      <div class="container">
+        <h1><i class="bi bi-building me-2"></i>Operating Lease Training</h1>
+        <p class="lead">Master operating lease accounting for lessors under IFRS 16 and ASC 842.</p>
+        <p>Lessons covering income recognition, depreciation, revenue tables, and more.</p>
+      </div>
+    </section>
+
     <div class="container">
-      <p class="mb-0">Operating Lease Training</p>
+
+      <!-- Progress -->
+      <div class="progress-section">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h5 class="mb-0"><i class="bi bi-bar-chart-fill me-2"></i>Your Progress</h5>
+          <span id="progress-label" class="text-muted">0% complete</span>
+        </div>
+        <div class="progress">
+          <div class="progress-bar bg-success" id="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+        </div>
+      </div>
+
+      <!-- Module Cards -->
+      <div class="row g-4 mb-4">
+
+        <!-- Lesson 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card module-card h-100">
+            <div class="card-header bg-primary text-white">Lesson 1</div>
+            <div class="card-body">
+              <h5 class="card-title">What is an Operating Lease?</h5>
+              <p class="card-text">Understand the distinction between operating and finance leases, and the lessor's accounting perspective.</p>
+              <span class="badge bg-success d-none" id="badge-lesson-1"><i class="bi bi-check-circle me-1"></i>Completed</span>
+            </div>
+            <div class="card-footer bg-white border-0">
+              <a href="lessons/01-what-is-operating-lease.html" class="btn btn-primary w-100">Start Lesson</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lesson 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card module-card h-100">
+            <div class="card-header bg-primary text-white">Lesson 2</div>
+            <div class="card-body">
+              <h5 class="card-title">Income Recognition</h5>
+              <p class="card-text">Learn how to recognise rental income under IFRS 16 and ASC 842, including modifications and collectibility.</p>
+              <span class="badge bg-success d-none" id="badge-lesson-2"><i class="bi bi-check-circle me-1"></i>Completed</span>
+            </div>
+            <div class="card-footer bg-white border-0">
+              <a href="lessons/02-income-recognition.html" class="btn btn-primary w-100">Start Lesson</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lesson 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card module-card h-100">
+            <div class="card-header bg-primary text-white">Lesson 3</div>
+            <div class="card-body">
+              <h5 class="card-title">Depreciation &amp; Initial Direct Costs</h5>
+              <p class="card-text">Explore straight-line depreciation, residual values, IDC treatment, and tax accounting basics.</p>
+              <span class="badge bg-success d-none" id="badge-lesson-3"><i class="bi bi-check-circle me-1"></i>Completed</span>
+            </div>
+            <div class="card-footer bg-white border-0">
+              <a href="lessons/03-depreciation-and-idcs.html" class="btn btn-primary w-100">Start Lesson</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lesson 4 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card module-card h-100">
+            <div class="card-header bg-info text-dark">Lesson 4</div>
+            <div class="card-body">
+              <h5 class="card-title">Revenue Table &amp; Configuration</h5>
+              <p class="card-text">Understand the revenue table structure, new operating lease columns, and system configuration.</p>
+              <span class="badge bg-success d-none" id="badge-lesson-4"><i class="bi bi-check-circle me-1"></i>Completed</span>
+            </div>
+            <div class="card-footer bg-white border-0">
+              <a href="lessons/04-revenue-table.html" class="btn btn-primary w-100">Start Lesson</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card module-card h-100">
+            <div class="card-header bg-warning text-dark">Assessment</div>
+            <div class="card-body">
+              <h5 class="card-title">Knowledge Quiz</h5>
+              <p class="card-text">Test your understanding with 20 multiple-choice questions covering all lessons.</p>
+              <span class="badge bg-success d-none" id="badge-quiz"><i class="bi bi-trophy me-1"></i></span>
+            </div>
+            <div class="card-footer bg-white border-0">
+              <a href="quiz/quiz.html" class="btn btn-warning w-100">Take Quiz</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculator -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card module-card h-100">
+            <div class="card-header bg-success text-white">Tool</div>
+            <div class="card-body">
+              <h5 class="card-title">Lease Calculator</h5>
+              <p class="card-text">Calculate straight-line rental income, depreciation, and view the amortisation schedule.</p>
+            </div>
+            <div class="card-footer bg-white border-0">
+              <a href="calculator/calculator.html" class="btn btn-success w-100">Open Calculator</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </footer>
+
+    <!-- Footer -->
+    <footer class="text-center">
+      <div class="container">
+        <p class="mb-0">Operating Lease Training</p>
+      </div>
+    </footer>
+
+  </div><!-- /site-content -->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
-  <script>document.addEventListener('DOMContentLoaded', initHomepage);</script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var loginSection = document.getElementById('login-section');
+    var siteContent = document.getElementById('site-content');
+
+    // If already logged in, show content immediately
+    if (Auth.isLoggedIn()) {
+      loginSection.style.display = 'none';
+      siteContent.style.display = '';
+      initHomepage();
+    }
+
+    // Handle login form submission
+    document.getElementById('login-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var passwordInput = document.getElementById('login-password');
+      var errorMsg = document.getElementById('login-error');
+
+      var valid = await Auth.verify(passwordInput.value);
+      if (valid) {
+        Auth.login();
+        loginSection.style.display = 'none';
+        siteContent.style.display = '';
+        initHomepage();
+      } else {
+        errorMsg.classList.add('show');
+        passwordInput.classList.add('is-invalid');
+        passwordInput.focus();
+      }
+    });
+  });
+  </script>
 </body>
 </html>
